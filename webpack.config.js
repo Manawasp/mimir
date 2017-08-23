@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let config = {
   entry: './src/index.js',
@@ -19,16 +19,15 @@ let config = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'sass-loader'],
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+          use: ['css-loader', 'sass-loader', 'postcss-loader'],
           fallback: 'style-loader'
-        })
+        }))
       }
     ] // en rules
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
-    new UglifyJSPlugin() // webpack.optimize.UglifyJsPlugin()
+    new ExtractTextPlugin('styles.css')
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './public'),
@@ -40,3 +39,10 @@ let config = {
 }
 
 module.exports = config;
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.plugins.push(
+    new UglifyJSPlugin(),
+    new OptimizeCssAssetsPlugin()
+  );
+}
