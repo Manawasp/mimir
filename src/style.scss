@@ -3,3 +3,37 @@ $bg: #eeeee;
 body {
   background-color: $bg;
 }
+
+#feedback-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.feedback-buddy {
+  bottom: 20px;
+  right: 30px;
+}
+
+.feedback-buddy {
+  // opacity: 0;
+  position: fixed;
+  z-index: 10;
+  bottom: 33px;
+  width: 44px;
+  height: 37px;
+  font-size: 20px;
+  text-align: center !important;
+  cursor: pointer;
+  background-color: #f4364c !important;
+  color: #ffffff !important;
+  padding-left: 1px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px 1px rgba(0,0,0,.18);
+}
+
+.feedback-buddy_min {
+  opacity: .96;
+  position: fixed;
+  direction: ltr !important;
+}

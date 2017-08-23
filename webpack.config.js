@@ -23,8 +23,12 @@ let config = {
           use: ['css-loader', 'sass-loader', 'postcss-loader'],
           fallback: 'style-loader'
         }))
+      },
+      {
+        test: /\.html$/,
+        use: 'raw-loader'
       }
-    ] // en rules
+    ] // end rules
   },
   plugins: [
     new ExtractTextPlugin('styles.css')

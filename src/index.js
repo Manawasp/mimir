@@ -1,7 +1,20 @@
-require('./style.scss')
+import './style.scss'
+import html from './feedly.html'
 
-const hi = () => {
-  document.write("hello, myfeed!");
+const feedback = () => {
+  document.write(html)
 }
 
-hi()
+window.fdlyOpen = () => {
+  alert("open")
+}
+
+window.fdlyClose = () => {
+  alert("close")
+}
+
+window.fdlySend = () => {
+  alert("send")
+}
+
+feedback()
