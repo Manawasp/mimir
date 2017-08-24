@@ -6,11 +6,11 @@ const feedback = () => {
 }
 
 window.fdlyOpen = () => {
-  alert("open")
+  document.getElementById('feedback-wrapper').setAttribute("data-v-state", "open");
 }
 
 window.fdlyClose = () => {
-  alert("close")
+  document.getElementById('feedback-wrapper').setAttribute("data-v-state", "close");
 }
 
 window.fdlySend = () => {
