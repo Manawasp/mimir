@@ -10,10 +10,20 @@ body {
   right: 0;
 
   &[data-v-state="open"] {
-    .feedback_popup {
+    .feedback_popup,
+    .feedback_emoticon {
       opacity: 1;
       bottom: 92px;
       pointer-events: all;
+    }
+
+    .feedback_emoticon {
+      bottom: 30px;
+      &:nth-child(1) {transition-delay: 0.1s;}
+      &:nth-child(2) {transition-delay: 0.22s;}
+      &:nth-child(3) {transition-delay: 0.34s;}
+      &:nth-child(4) {transition-delay: 0.46s;}
+      &:nth-child(5) {transition-delay: 0.58s;}
     }
 
     .feedback-buddy {
@@ -66,10 +76,40 @@ body {
   right: 30px;
   background: #ffffff;
   box-shadow: 0 6px 100px 0 rgba(0,0,0,.35) !important;
+  transition: all .2s ease-in-out;
+  border-radius: 3px;
+}
 
-  &.fade {
-    opacity: 1;
-    bottom: 92px;
-    pointer-events: all;
-  }
+#feedback-wrapper p {
+  color: #333333;
+  margin: 0;
+}
+
+.feedback_title {
+    padding: 40px 30px 0 30px;
+    text-align: center;
+    word-break: break-word;
+    word-wrap: break-word;
+    cursor: default;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: normal !important;
+}
+
+.feedback_emoticon_wrapper {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.feedback_emoticon {
+  position: relative;
+  float: left !important;
+  bottom: -50px;
+  opacity: 0;
+  width: 20%;
+  text-align: center;
+  font-size: 26px;
+  cursor: pointer;
+  height: 30px;
+  transition: all .2s ease-in-out;
 }
