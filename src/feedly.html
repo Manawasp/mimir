@@ -9,28 +9,41 @@
     <div class="feedback_state_1">
       <p class="feedback_title">How would you rate your experience ?</p>
 
+      <!-- STEP #1 -->
       <div class="feedback_content">
         <div class="feedback_emoticon_wrapper">
-          <div class="feedback_emoticon">
+          <div class="feedback_emoticon" onclick="fdlyEmoticon(1)">
             <span class="feedback_emoticon_icon">:)</span>
             <span class="feedback_emotion_text">Hate</span>
-          </div><div class="feedback_emoticon">
+          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(2)">
             <span class="feedback_emoticon_icon">:x</span>
             <span class="feedback_emotion_text">Dislike</span>
-          </div><div class="feedback_emoticon">
+          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(3)">
             <span class="feedback_emoticon_icon">:|</span>
             <span class="feedback_emotion_text">Neutral</span>
-          </div><div class="feedback_emoticon">
+          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(4)">
             <span class="feedback_emoticon_icon">:)</span>
             <span class="feedback_emotion_text">Like</span>
-          </div><div class="feedback_emoticon">
+          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(5)">
             <span class="feedback_emoticon_icon">:D</span>
             <span class="feedback_emotion_text">Love</span>
           </div>
         </div>
 
         <div class="feedback_content_comment">
+          <textarea
+            maxlength="1000"
+            placeholder="Tell us about your experience..."
+            oninput="fdlyTextarea(this.value)"
+            class="feedback_textarea"
+            rows="3"></textarea>
         </div>
+      </div>
+      <!-- STEP #2 -->
+      <!-- FOOTER -->
+      <div class="feedback_footer">
+        <!-- <button type="button">Skip</button> -->
+        <button type="button" class="feedback_btn primary" disabled>Send</button>
       </div>
     </div>
   </div>
