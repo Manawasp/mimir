@@ -83,8 +83,10 @@ body {
   &[data-state="2"] .feedback_state_2 {display: block}
   &[data-state="2"] .feedback_skip {display: inline-block}
   &[data-state="3"] .feedback_message {opacity: 1}
+  &[data-state="3"] #ellipse_eye {display: none}
+  &[data-state="3"] #left_eye, &[data-state="3"] #right_eye {display: block}
 }
-
+ #left_eye, #right_eye {display: none}
 .feedback_state_1,
 .feedback_state_2 {
   display: none;
@@ -154,6 +156,7 @@ body {
   box-sizing: border-box;
   border-radius: 3px;
   transition: all .2s ease-in-out;
+      font-size: 0.9em;
 
   &:before {
     content: "";
@@ -269,6 +272,11 @@ body {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+}
+textarea.feedback_textarea {
+  height: 105px !important;
+  line-height: 18px !important;
+  font-size: 0.9em;
 }
 
 .text-center {
