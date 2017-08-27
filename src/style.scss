@@ -1,8 +1,4 @@
-$bg: #eeeee;
-
-body {
-  background-color: $bg;
-}
+$emojis: [1, 2, 3, 4, 5];
 
 #feedback-wrapper {
   font-family: Helvetica, Arial, sans-serif !important;
@@ -20,11 +16,9 @@ body {
 
     .feedback_emoticon {
       bottom: 0px;
-      &:nth-child(1) {transition-delay: 0.13s;}
-      &:nth-child(2) {transition-delay: 0.21s;}
-      &:nth-child(3) {transition-delay: 0.33s;}
-      &:nth-child(4) {transition-delay: 0.39s;}
-      &:nth-child(5) {transition-delay: 0.47s;}
+      @each $emoji in $emojis {
+        &:nth-child(#{$emoji}) {transition-delay: 0.05s + 0.08s * $emoji;}
+      }
     }
 
     .feedback-buddy {
@@ -46,11 +40,12 @@ body {
     }
   }
 
-  &[data-emoticon="1"] .feedback_content_comment:before {left: 12%;}
-  &[data-emoticon="2"] .feedback_content_comment:before {left: 30.5%;}
-  &[data-emoticon="3"] .feedback_content_comment:before {left: 49%;}
-  &[data-emoticon="4"] .feedback_content_comment:before {left: 67.5%;}
-  &[data-emoticon="5"] .feedback_content_comment:before {left: 86%;}
+  @each $emoji in $emojis {
+    &:nth-child(#{$emoji}) {transition-delay: 0.05s + 0.08s * $emoji;}
+    &[data-emoticon="#{$emoji}"] .feedback_content_comment:before {
+      left: 12% + 18.5% * ($emoji - 1);
+    }
+  }
 
   &[data-emoticon] {
     .feedback_content_comment,
