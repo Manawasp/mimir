@@ -1,40 +1,58 @@
 import './style.scss'
 import html from './feedly.html'
 
+let els = {}
+
 const feedback = () => {
   document.write(html)
-
+  els = {
+    "send": document.getElementById("feedback_send"),
+    "wrapper": document.getElementById("feedback-wrapper"),
+    "comment": document.getElementById("feedback_comment")
+  }
 }
 
 /* function */
 window.fdlyTextarea = (value) => {
   if (value && value.length > 0) {
-    document.getElementsByClassName("feedback_btn")[0].removeAttribute("disabled")
+    els.send.removeAttribute("disabled")
   } else {
-    document.getElementsByClassName("feedback_btn")[0].setAttribute("disabled", '')
+    els.send.setAttribute("disabled", "")
+  }
+}
+
+window.fdlyEmail = (value) => {
+  if (document.getElementById('feedback_email').checkValidity()) {
+    els.send.removeAttribute("disabled")
+  } else {
+    els.send.setAttribute("disabled", "")
   }
 }
 
 window.fdlyOpen = () => {
-  document.getElementById('feedback-wrapper').setAttribute("data-v-state", "open")
+  els.wrapper.setAttribute("data-v-state", "open")
+  els.wrapper.setAttribute("data-state", 1)
 }
 
 window.fdlyClose = () => {
-  let el = document.getElementById('feedback-wrapper');
-  el.setAttribute("data-v-state", "close");
+  els.wrapper.setAttribute("data-v-state", "close");
+
   setTimeout(function () {
-    el.removeAttribute("data-emoticon");
-    document.getElementsByClassName("feedback_textarea")[0].value = '';
-    document.getElementsByClassName("feedback_btn")[0].setAttribute("disabled", '');
+    els.wrapper.removeAttribute("data-emoticon");
+    els.comment.value = '';
+    els.send.setAttribute("disabled", "")
   }, 200);
 }
 
 window.fdlySend = () => {
-  alert("send")
+  if (els.wrapper.getAttribute('data-state') === "1") {
+    els.wrapper.setAttribute("data-state", 2)
+    els.send.setAttribute("disabled", "")
+  }
 }
 
 window.fdlyEmoticon = (id) => {
-  document.getElementById('feedback-wrapper').setAttribute('data-emoticon', id);
+  els.wrapper.setAttribute('data-emoticon', id)
 }
 
 feedback()

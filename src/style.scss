@@ -56,14 +56,27 @@ body {
     .feedback_footer {
       display: block;
     }
-    .feedback_emotion_text,
-    .feedback_title {
+    .feedback_state_1 .feedback_title,
+    .feedback_emotion_text {
       display: none;
     }
     .feedback_emoticon_wrapper {
       margin-bottom: 20px;
     }
   }
+
+  &[data-state="1"] .feedback_state_1 {display: block}
+  &[data-state="2"] .feedback_state_2 {display: block}
+  &[data-state="2"] .feedback_skip {display: inline-block}
+}
+
+.feedback_state_1,
+.feedback_state_2 {
+  display: none;
+}
+
+.feedback_btn.feedback_skip {
+  display: none;
 }
 
 .feedback-buddy,
@@ -116,7 +129,7 @@ body {
 }
 
 .feedback_title {
-  padding: 40px 40px 0;
+  padding: 40px;
   text-align: center;
   word-break: break-word;
   word-wrap: break-word;
@@ -124,6 +137,10 @@ body {
   font-size: 17px;
   font-weight: normal;
   line-height: normal !important;
+}
+
+.feedback_state_1 .feedback_title {
+  padding-bottom: 0;
 }
 
 .feedback_emoticon_wrapper {
@@ -180,7 +197,9 @@ body {
   margin-bottom: 12px;
   display: none;
   position: relative;
+}
 
+.feedback_state_1 .feedback_content_comment {
   &:before {
     content: "";
     width: 1px;
@@ -208,6 +227,10 @@ body {
   box-shadow: none !important;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .feedback_footer {
   padding: 0 12px 12px 12px;
   text-align: right;
@@ -232,6 +255,19 @@ body {
   zoom: 1;
   transition: all .2s ease-in-out;
   border-radius: 3px;
+  background: transparent;
+
+  &.link {
+    font-weight: normal !important;
+    text-decoration: underline !important;
+  }
+
+  &.default {
+    color: #aaa;
+    &:hover {
+      color: #666;
+    }
+  }
 
   &.primary {
     background: #f4364c !important;

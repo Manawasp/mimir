@@ -6,10 +6,9 @@
     X
   </div>
   <div class="feedback_popup">
+    <!-- STEP #1 -->
     <div class="feedback_state_1">
       <p class="feedback_title">How would you rate your experience ?</p>
-
-      <!-- STEP #1 -->
       <div class="feedback_content">
         <div class="feedback_emoticon_wrapper">
           <div class="feedback_emoticon" onclick="fdlyEmoticon(1)">
@@ -33,18 +32,44 @@
         <div class="feedback_content_comment">
           <textarea
             maxlength="1000"
+            id="feedback_comment"
             placeholder="Tell us about your experience..."
             oninput="fdlyTextarea(this.value)"
             class="feedback_textarea"
             rows="3"></textarea>
         </div>
       </div>
-      <!-- STEP #2 -->
-      <!-- FOOTER -->
-      <div class="feedback_footer">
-        <!-- <button type="button">Skip</button> -->
-        <button type="button" class="feedback_btn primary" disabled>Send</button>
+    </div>
+    <!-- STEP #2 -->
+    <div class="feedback_state_2">
+      <p class="feedback_title">Enter your email address if you would like to receive a follow up.</p>
+      <div class="feedback_content">
+        <div class="feedback_content_comment">
+          <input
+            maxlength="255"
+            class="feedback_textarea text-center"
+            type="email"
+            id="feedback_email"
+            name="_hj-f5b2a1eb-9b07_email"
+            oninput="fdlyEmail()"
+            placeholder="email@domain.com"
+            data-bind="email"
+            required>
+        </div>
       </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="feedback_footer">
+      <button
+        type="button"
+        onclick="fdlySend()"
+        class="feedback_skip feedback_btn link default">Skip</button>
+      <button
+        type="button"
+        id="feedback_send"
+        class="feedback_btn primary"
+        disabled
+        onclick="fdlySend()">Send</button>
     </div>
   </div>
 </div>
