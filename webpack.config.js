@@ -6,7 +6,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const languages = {
   'en': require('./locals/en.json'),
-  'fr': require('./locals/fr.json')
+  'fr': require('./locals/fr.json'),
+  'cn': require('./locals/cn.json')
 }
 
 let configs = Object.keys(languages).map(function (language) {
