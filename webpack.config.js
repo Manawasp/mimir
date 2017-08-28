@@ -1,8 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 let config = {
   entry: './src/index.js',
@@ -15,7 +14,7 @@ let config = {
       {
         test: /\.js$/, // files ending with .js
         exclude: /node_modules/, // exclude the node_modules directory
-        loader: "babel-loader" // use this (babel-core) loader
+        loader: 'babel-loader' // use this (babel-core) loader
       },
       {
         test: /\.scss$/,
@@ -42,11 +41,11 @@ let config = {
   devtool: 'eval-source-map'
 }
 
-module.exports = config;
+module.exports = config
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.plugins.push(
     new UglifyJSPlugin(),
     new OptimizeCssAssetsPlugin()
-  );
+  )
 }
