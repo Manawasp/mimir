@@ -57,7 +57,7 @@ window.fdlySend = () => {
       if (els.wrapper.getAttribute('data-state') === '3') {
         els.wrapper.setAttribute('data-state', 1)
       }
-    }, 4000)
+    }, 3000)
   }
 }
 

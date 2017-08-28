@@ -13,7 +13,7 @@
   </svg>
   </div>
   <div class="feedback_message">
-    Thank you for sharing your feedback with us!
+    ${__('thanks')}
   </div>
   <div class="feedback_close" onclick="fdlyClose()">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;margin-top: 11px;
@@ -50,7 +50,7 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">Hate</span>
+            <span class="feedback_emotion_text">${__('emoji_hate')}</span>
           </div><div class="feedback_emoticon" onclick="fdlyEmoticon(2)">
             <span class="feedback_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px">
@@ -70,7 +70,7 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">Dislike</span>
+            <span class="feedback_emotion_text">${__('emoji_dislike')}</span>
           </div><div class="feedback_emoticon" onclick="fdlyEmoticon(3)">
             <span class="feedback_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px">
@@ -90,7 +90,7 @@
                   </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">Neutral</span>
+            <span class="feedback_emotion_text">${__('emoji_neutral')}</span>
           </div><div class="feedback_emoticon" onclick="fdlyEmoticon(4)">
             <span class="feedback_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px;">
@@ -110,7 +110,7 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">Like</span>
+            <span class="feedback_emotion_text">${__('emoji_like')}</span>
           </div><div class="feedback_emoticon" onclick="fdlyEmoticon(5)">
             <span class="feedback_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px;">
@@ -130,7 +130,7 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">Love</span>
+            <span class="feedback_emotion_text">${__('emoji_love')}</span>
           </div>
         </div>
 
@@ -138,7 +138,7 @@
           <textarea
             maxlength="1000"
             id="feedback_comment"
-            placeholder="Tell us about your experience..."
+            placeholder="${__('tell_us')}"
             oninput="fdlyTextarea(this.value)"
             class="feedback_textarea"
             rows="3"></textarea>
@@ -147,7 +147,7 @@
     </div>
     <!-- STEP #2 -->
     <div class="feedback_state_2">
-      <p class="feedback_title">Enter your email address if you would like to receive a follow up.</p>
+      <p class="feedback_title">${__('follow_up')}</p>
       <div class="feedback_content">
         <div class="feedback_content_comment">
           <input
@@ -168,7 +168,7 @@
       <button
         type="button"
         onclick="fdlySend()"
-        class="feedback_skip feedback_btn link default">Skip</button>
+        class="feedback_skip feedback_btn link default">${__('skip')}</button>
       <button
         type="button"
         id="feedback_send"
