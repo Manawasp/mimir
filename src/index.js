@@ -48,17 +48,22 @@ window.fdlyClose = () => {
 
 window.fdlySend = () => {
   if (els.wrapper.getAttribute('data-state') === '1') {
-    els.wrapper.setAttribute('data-state', 2)
-    els.send.setAttribute('disabled', '')
-  } else {
-    window.fdlyClose()
-    setTimeout(() => { els.wrapper.setAttribute('data-state', 3) }, 150)
-    setTimeout(() => {
-      if (els.wrapper.getAttribute('data-state') === '3') {
-        els.wrapper.setAttribute('data-state', 1)
-      }
-    }, 3000)
+    let user = document.getElementsByTagName('head')[0].getAttribute('user-id') ||
+      document.getElementsByTagName('head')[0].getAttribute('user-email')
+    if (user === null) {
+      els.wrapper.setAttribute('data-state', 2)
+      els.send.setAttribute('disabled', '')
+      return
+    }
   }
+
+  window.fdlyClose()
+  setTimeout(() => { els.wrapper.setAttribute('data-state', 3) }, 150)
+  setTimeout(() => {
+    if (els.wrapper.getAttribute('data-state') === '3') {
+      els.wrapper.setAttribute('data-state', 1)
+    }
+  }, 3000)
 }
 
 window.fdlyEmoticon = (id) => {
