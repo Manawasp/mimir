@@ -47,16 +47,36 @@ window.fdlyClose = () => {
 }
 
 window.fdlySend = () => {
+  let user
   if (els.wrapper.getAttribute('data-state') === '1') {
-    let user = document.getElementsByTagName('head')[0].getAttribute('user-id') ||
+    user = document.getElementsByTagName('head')[0].getAttribute('user-id') ||
       document.getElementsByTagName('head')[0].getAttribute('user-email')
-    if (user === null) {
+    if (!user) {
       els.wrapper.setAttribute('data-state', 2)
       els.send.setAttribute('disabled', '')
       return
     }
   }
 
+  // retrieve data
+  let params = 'comment=' + encodeURI(els.comment.value) + '&reaction=' +
+    els.wrapper.getAttribute('data-emoticon')
+
+  if (!user) {
+    user = els.email.value
+  }
+
+  if (user) {
+    params += '&user=' + user
+  }
+
+  // Send request
+  var xhr = new XMLHttpRequest()
+  xhr.open('POST', '/insight', true)
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+  xhr.send(params)
+
+  // Close insight
   window.fdlyClose()
   setTimeout(() => { els.wrapper.setAttribute('data-state', 3) }, 150)
   setTimeout(() => {
