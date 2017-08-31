@@ -9,14 +9,8 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/julienschmidt/httprouter"
-	rethink "gopkg.in/gorethink/gorethink.v3"
 
-	"ep17_quizz/api/databases"
-	"ep17_quizz/api/routers/questions"
-	"ep17_quizz/api/routers/root"
-	"ep17_quizz/api/routers/scores"
-	"ep17_quizz/api/routers/stats"
-	"ep17_quizz/api/routers/users"
+	"feedback/api/routers/root"
 )
 
 // Version TODO
@@ -29,37 +23,6 @@ var (
 
 func initRouter(router *httprouter.Router) {
 	root.NewRouter(router, Version, Build, Hash)
-	scores.NewRouter(router)
-	users.NewRouter(router)
-	stats.NewRouter(router)
-	questions.NewRouter(router)
-}
-
-// Initialize setup
-func initDB(address, username, password, database string) {
-	databases.RethinkConfig.Address = address
-	databases.RethinkConfig.Database = database
-	session, err := rethink.Connect(databases.RethinkConfig)
-
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-
-	// Ensure DB is valid
-	_, err = rethink.DBCreate(database).RunWrite(session)
-	if err != nil {
-		log.Print(err.Error())
-	}
-
-	_, err = rethink.TableCreate("users").RunWrite(session)
-	if err != nil {
-		log.Print(err.Error())
-	}
-
-	_, err = rethink.TableCreate("questions").RunWrite(session)
-	if err != nil {
-		log.Print(err.Error())
-	}
 }
 
 func main() {

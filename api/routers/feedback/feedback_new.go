@@ -1,27 +1,26 @@
 package feedback
 
 import (
+	"encoding/json"
+	"feedback/api/models"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
-	"github.com/unrolled/render"
 )
 
-func feedbackNew(rw http.ResponseWrite, req *http.Request, ps httprouter.Params) {
-  rw.ParseForm()
+func feedbackNew(rw http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+	var feed models.Feedback
 
-  model := {
-    emoji: r.Form.Get("emoji"),
-    message: r.Form.Get("message"),
-    email: r.Form.Get("email")
-  }
+	decoder := json.NewDecoder(req.Body)
+	if err := decoder.Decode(&feed); err != nil {
+		return
+	}
+	defer req.Body.Close()
 
-  go registerFeedback()
+	go registerFeedback()
 
-	rdr = render.New()
-	rdr.JSON(rw, http.StatusCreated, {})
+	rw.WriteHeader(http.StatusCreated)
 }
-
 
 func registerFeedback() {
 
