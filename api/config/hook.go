@@ -3,9 +3,13 @@ package config
 import (
 	"bytes"
 	"encoding/json"
-	"feedback/api/models"
+	"io/ioutil"
 	"net/http"
 	"regexp"
+
+	log "github.com/Sirupsen/logrus"
+
+	"feedback/api/models"
 )
 
 type WebhookChannel struct {
@@ -45,7 +49,14 @@ func (wh *Webhook) Notify(feedback *models.Feedback) {
 
 	// Send notif
 	data, _ := json.Marshal(map[string]interface{}{"payload": notif})
-	http.Post(wh.URL, "application/json", bytes.NewReader(data))
+	r, err := http.Post(wh.URL, "application/json", bytes.NewReader(data))
+	if err != nil {
+		log.Errorf("Error: %v.", err)
+	} else {
+		log.Infof("status: %d", r.StatusCode)
+		body, _ := ioutil.ReadAll(r.Body)
+		log.Infof("body: %s", body)
+	}
 }
 
 func createText(feedback *models.Feedback) string {
