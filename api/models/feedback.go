@@ -13,6 +13,9 @@ type Feedback struct {
 	Message   string        `json:"message"`
 	Emoji     int           `json:"emoji"`
 	Email     string        `json:"email"`
+	UserID    string        `json:"user_id"`
+	Domain    string        `json:"domain"`
+	URL       string        `json:"url"`
 	CreatedAt time.Time     `json:"created_at"`
 }
 

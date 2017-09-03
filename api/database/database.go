@@ -3,6 +3,7 @@ package database
 import (
 	"crypto/tls"
 	"crypto/x509"
+	"errors"
 	"net"
 
 	log "github.com/Sirupsen/logrus"
@@ -11,9 +12,15 @@ import (
 	"feedback/api/config"
 )
 
+var Session *mgo.Session
+
 // New TODO
-func New() (*mgo.Session, error) {
-	conf := config.AppConfig.DB
+func New() error {
+	conf := config.App.DB
+
+	if len(conf.Host) == 0 {
+		return errors.New("Database is not configured")
+	}
 
 	// Generate connection string
 	// "mongodb://<username>:<password>@<hostname>:<port>,<hostname>:<port>/<db-name>
@@ -38,15 +45,15 @@ func New() (*mgo.Session, error) {
 		}
 	}
 
-	session, err := mgo.DialWithInfo(dialInfo)
+	Session, err := mgo.DialWithInfo(dialInfo)
 	if err != nil {
 		log.Errorf("Unable to connect the datastore: %v", err)
-		return nil, err
+		return err
 	}
 
-	if err := session.Ping(); err != nil {
-		return nil, err
+	if err := Session.Ping(); err != nil {
+		return err
 	}
 
-	return session, nil
+	return nil
 }

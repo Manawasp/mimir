@@ -10,6 +10,7 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/julienschmidt/httprouter"
 
+	"feedback/api/routers/feedback"
 	"feedback/api/routers/root"
 )
 
@@ -23,6 +24,7 @@ var (
 
 func initRouter(router *httprouter.Router) {
 	root.NewRouter(router, Version, Build, Hash)
+	feedback.NewRouter(router)
 }
 
 func main() {

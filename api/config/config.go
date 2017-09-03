@@ -9,11 +9,11 @@ import (
 
 // Config TODO
 type Config struct {
-	DB   Database  `toml:"database"`
-	Hook []Webhook `toml:"webhook"`
+	DB    Database  `toml:"database"`
+	Hooks []Webhook `toml:"webhook"`
 }
 
-var AppConfig Config
+var App Config
 
 // Init conf var read toml file and add it inside of the var
 func init() {
@@ -23,7 +23,7 @@ func init() {
 		log.Fatal("Config file is missing.")
 	}
 
-	if _, err := toml.DecodeFile(configFile, &AppConfig); err != nil {
+	if _, err := toml.DecodeFile(configFile, &App); err != nil {
 		log.Fatal(err)
 	}
 }
