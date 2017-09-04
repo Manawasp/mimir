@@ -28,7 +28,7 @@ type NotifyMessage struct {
 	Channel  string `json:"channel"`
 	Username string `json:"username"`
 	Text     string `json:"text"`
-	Icon     string `json:"icon"`
+	Icon     string `json:"icon_url"`
 }
 
 func (wh *Webhook) Notify(feedback *models.Feedback) {
@@ -48,7 +48,7 @@ func (wh *Webhook) Notify(feedback *models.Feedback) {
 	}
 
 	// Send notif
-	data, _ := json.Marshal(map[string]interface{}{"payload": notif})
+	data, _ := json.Marshal(notif)
 	r, err := http.Post(wh.URL, "application/json", bytes.NewReader(data))
 	if err != nil {
 		log.Errorf("Error: %v.", err)
@@ -71,21 +71,19 @@ func createText(feedback *models.Feedback) string {
 	if len(feedback.Domain) > 0 {
 		str += " from <" + feedback.URL + ">"
 	}
-	if feedback.Emoji >= 1 && feedback.Emoji <= 5 {
-		str += " " + emojiTable[feedback.Emoji-1]
-	}
-	str += "\n"
+	str += ":\n"
 	str += "> " + feedback.Message
+	str += "\n"
 	if len(feedback.Email) > 0 || len(feedback.UserID) > 0 {
-		str += "> - "
 		if len(feedback.Email) > 0 {
-			str += feedback.Email
-		} else {
-			str += "user-id:"
+			str += "*email*: " + feedback.Email
 		}
 		if len(feedback.UserID) > 0 {
-			str += " " + feedback.UserID
+			str += "  *id*: #" + feedback.UserID
 		}
+	}
+	if feedback.Emoji >= 1 && feedback.Emoji <= 5 {
+		str += "  " + emojiTable[feedback.Emoji-1]
 	}
 	return str
 }
