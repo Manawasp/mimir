@@ -45,6 +45,7 @@ func (wh *Webhook) Notify(feedback *models.Feedback) {
 			notif.Channel = h.Name
 			break
 		}
+		log.Infof("Pattern %s / URL: %s", h.Pattern, feedback.URL)
 	}
 
 	// Send notif
@@ -69,7 +70,7 @@ func createText(feedback *models.Feedback) string {
 	}
 	str := "Receive new feedback"
 	if len(feedback.Domain) > 0 {
-		str += " from <" + feedback.URL + ">"
+		str += " from <" + feedback.Domain + ">"
 	}
 	str += ":\n"
 	str += "> " + feedback.Message
