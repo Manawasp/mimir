@@ -3,7 +3,6 @@ package config
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
 	"net/http"
 	"regexp"
 
@@ -45,28 +44,23 @@ func (wh *Webhook) Notify(feedback *models.Feedback) {
 			notif.Channel = h.Name
 			break
 		}
-		log.Infof("Pattern %s / URL: %s", h.Pattern, feedback.URL)
 	}
 
 	// Send notif
 	data, _ := json.Marshal(notif)
-	r, err := http.Post(wh.URL, "application/json", bytes.NewReader(data))
+	_, err := http.Post(wh.URL, "application/json", bytes.NewReader(data))
 	if err != nil {
 		log.Errorf("Error: %v.", err)
-	} else {
-		log.Infof("status: %d", r.StatusCode)
-		body, _ := ioutil.ReadAll(r.Body)
-		log.Infof("body: %s", body)
 	}
 }
 
 func createText(feedback *models.Feedback) string {
 	emojiTable := []string{
-		":grinning:",
-		":slightly_smiling_face:",
-		":neutral_face:",
-		":slightly_frowning_face:",
 		":angry:",
+		":slightly_frowning_face:",
+		":neutral_face:",
+		":slightly_smiling_face:",
+		":grinning:",
 	}
 	str := "Receive new feedback"
 	if len(feedback.Domain) > 0 {
