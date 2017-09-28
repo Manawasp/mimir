@@ -1,5 +1,5 @@
-<div id="feedback-wrapper" data-v-state="close" data-position="bottom_right" data-state="1">
-  <div class="feedback-buddy feedback-buddy_min" onclick="fdlyOpen()">
+<div id="robin-wrapper" data-v-state="close" data-position="bottom_right" data-state="1">
+  <div class="robin-buddy robin-buddy_min" onclick="robinOpen()">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" enable-background="new 0 0 64 64" style="height:36px">
     <path xmlns="http://www.w3.org/2000/svg" d="m44.564 39.39c-.626 0-1.247 0-1.873 0-.1 0-.162.035-.25.049-.099.014-.189.018-.285.058-.158.06-.289.154-.407.264-.024.021-.052.025-.075.051-4.522 4.408-10.447 5.414-16.09 2.511-3.03-1.558-2.78-2.932-6.02-2.932-1.327 0-1.822 1.538-1.018 2.459 7.315 8.443 19.726 8.443 27.05 0 .796-.922.305-2.46-1.022-2.46" fill="#fff"/>
     <path xmlns="http://www.w3.org/2000/svg" d="m27.76 29.776c-.224 0-4.31-1.568-8.436-1.568-3.686 0-7.403 1.568-8.436 1.568-.896 0-1.23-1.038-.688-1.658 4.936-5.698 13.309-5.698 18.248 0 .538.621.204 1.658-.688 1.658" fill="#fff" id="left_eye"/>
@@ -12,10 +12,10 @@
     </g>
   </svg>
   </div>
-  <div class="feedback_message">
+  <div class="robin_message">
     ${__('thanks')}
   </div>
-  <div class="feedback_close" onclick="fdlyClose()">
+  <div class="robin_close" onclick="robinClose()">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;margin-top: 11px;
     height: 14px;">
       <g transform="matrix(1.25,0,0,-1.25,0,45)" id="g10">
@@ -25,14 +25,14 @@
       </g>
   </svg>
   </div>
-  <div class="feedback_popup">
+  <div class="robin_popup">
     <!-- STEP #1 -->
-    <div class="feedback_state_1">
-      <p class="feedback_title">${__('rate_your_experience')}</p>
-      <div class="feedback_content">
-        <div class="feedback_emoticon_wrapper">
-          <div class="feedback_emoticon" onclick="fdlyEmoticon(1)">
-            <span class="feedback_emoticon_icon">
+    <div class="robin_state_1">
+      <p class="robin_title">${__('rate_your_experience')}</p>
+      <div class="robin_content">
+        <div class="robin_emoticon_wrapper">
+          <div class="robin_emoticon" onclick="robinEmoticon(1)">
+            <span class="robin_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px;">
                 <g transform="matrix(1.25,0,0,-1.25,0,45)" id="g10">
                   <g transform="translate(36,18)" id="g20">
@@ -50,9 +50,9 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">${__('emoji_hate')}</span>
-          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(2)">
-            <span class="feedback_emoticon_icon">
+            <span class="robin_emotion_text">${__('emoji_hate')}</span>
+          </div><div class="robin_emoticon" onclick="robinEmoticon(2)">
+            <span class="robin_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px">
                 <g transform="matrix(1.25,0,0,-1.25,0,45)" id="g10">
                   <g transform="translate(36,18)" id="g20">
@@ -70,9 +70,9 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">${__('emoji_dislike')}</span>
-          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(3)">
-            <span class="feedback_emoticon_icon">
+            <span class="robin_emotion_text">${__('emoji_dislike')}</span>
+          </div><div class="robin_emoticon" onclick="robinEmoticon(3)">
+            <span class="robin_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px">
                 <g transform="matrix(1.25,0,0,-1.25,0,45)" id="g10">
                     <g transform="translate(36,18)" id="g20">
@@ -90,9 +90,9 @@
                   </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">${__('emoji_neutral')}</span>
-          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(4)">
-            <span class="feedback_emoticon_icon">
+            <span class="robin_emotion_text">${__('emoji_neutral')}</span>
+          </div><div class="robin_emoticon" onclick="robinEmoticon(4)">
+            <span class="robin_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px;">
                 <g transform="matrix(1.25,0,0,-1.25,0,45)" id="g10">
                   <g transform="translate(36,18)" id="g20">
@@ -110,9 +110,9 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">${__('emoji_like')}</span>
-          </div><div class="feedback_emoticon" onclick="fdlyEmoticon(5)">
-            <span class="feedback_emoticon_icon">
+            <span class="robin_emotion_text">${__('emoji_like')}</span>
+          </div><div class="robin_emoticon" onclick="robinEmoticon(5)">
+            <span class="robin_emoticon_icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;height:28px;">
                 <g transform="matrix(1.25,0,0,-1.25,0,45)" id="g10">
                   <g transform="translate(36,18)" id="g20">
@@ -130,33 +130,33 @@
                 </g>
               </svg>
             </span>
-            <span class="feedback_emotion_text">${__('emoji_love')}</span>
+            <span class="robin_emotion_text">${__('emoji_love')}</span>
           </div>
         </div>
 
-        <div class="feedback_content_comment">
+        <div class="robin_content_comment">
           <textarea
             maxlength="1000"
-            id="feedback_comment"
+            id="robin_comment"
             placeholder="${__('tell_us')}"
-            oninput="fdlyTextarea(this.value)"
-            class="feedback_textarea"
+            oninput="robinTextarea(this.value)"
+            class="robin_textarea"
             rows="3"></textarea>
         </div>
       </div>
     </div>
     <!-- STEP #2 -->
-    <div class="feedback_state_2">
-      <p class="feedback_title">${__('follow_up')}</p>
-      <div class="feedback_content">
-        <div class="feedback_content_comment">
+    <div class="robin_state_2">
+      <p class="robin_title">${__('follow_up')}</p>
+      <div class="robin_content">
+        <div class="robin_content_comment">
           <input
             maxlength="255"
-            class="feedback_textarea text-center"
+            class="robin_textarea text-center"
             type="email"
-            id="feedback_email"
+            id="robin_email"
             name="_hj-f5b2a1eb-9b07_email"
-            oninput="fdlyEmail()"
+            oninput="robinEmail()"
             placeholder="email@domain.com"
             data-bind="email"
             required>
@@ -164,17 +164,17 @@
       </div>
     </div>
     <!-- FOOTER -->
-    <div class="feedback_footer">
+    <div class="robin_footer">
       <button
         type="button"
-        onclick="fdlySend()"
-        class="feedback_skip feedback_btn link default">${__('skip')}</button>
+        onclick="robinSend()"
+        class="robin_skip robin_btn link default">${__('skip')}</button>
       <button
         type="button"
-        id="feedback_send"
-        class="feedback_btn primary"
+        id="robin_send"
+        class="robin_btn primary"
         disabled
-        onclick="fdlySend()">${__('send')}</button>
+        onclick="robinSend()">${__('send')}</button>
     </div>
   </div>
 </div>

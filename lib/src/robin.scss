@@ -1,71 +1,71 @@
 $emojis: [1, 2, 3, 4, 5];
 
-#feedback-wrapper {
+#robin-wrapper {
   font-family: Helvetica, Arial, sans-serif !important;
   position: fixed;
   bottom: 0;
   right: 0;
 
   &[data-v-state="open"] {
-    .feedback_popup,
-    .feedback_emoticon {
+    .robin_popup,
+    .robin_emoticon {
       opacity: 1;
       bottom: 92px;
       pointer-events: all;
     }
 
-    .feedback_emoticon {
+    .robin_emoticon {
       bottom: 0px;
       @each $emoji in $emojis {
         &:nth-child(#{$emoji}) {transition-delay: 0.05s + 0.08s * $emoji;}
       }
     }
 
-    .feedback-buddy {
+    .robin-buddy {
       display: none;
     }
 
-    .feedback_close {
+    .robin_close {
       display: block;
     }
   }
 
-  &[data-emoticon="1"] .feedback_emoticon:nth-child(1),
-  &[data-emoticon="2"] .feedback_emoticon:nth-child(2),
-  &[data-emoticon="3"] .feedback_emoticon:nth-child(3),
-  &[data-emoticon="4"] .feedback_emoticon:nth-child(4),
-  &[data-emoticon="5"] .feedback_emoticon:nth-child(5) {
-    .feedback_emoticon_icon {
+  &[data-emoticon="1"] .robin_emoticon:nth-child(1),
+  &[data-emoticon="2"] .robin_emoticon:nth-child(2),
+  &[data-emoticon="3"] .robin_emoticon:nth-child(3),
+  &[data-emoticon="4"] .robin_emoticon:nth-child(4),
+  &[data-emoticon="5"] .robin_emoticon:nth-child(5) {
+    .robin_emoticon_icon {
       opacity: 1;
     }
   }
 
   @each $emoji in $emojis {
     &:nth-child(#{$emoji}) {transition-delay: 0.05s + 0.08s * $emoji;}
-    &[data-emoticon="#{$emoji}"] .feedback_content_comment:before {
+    &[data-emoticon="#{$emoji}"] .robin_content_comment:before {
       left: 12% + 18.5% * ($emoji - 1);
     }
   }
 
   &[data-emoticon] {
-    .feedback_content_comment,
-    .feedback_footer {
+    .robin_content_comment,
+    .robin_footer {
       display: block;
     }
-    .feedback_state_1 .feedback_title,
-    .feedback_emotion_text {
+    .robin_state_1 .robin_title,
+    .robin_emotion_text {
       display: none;
     }
-    .feedback_emoticon_wrapper {
+    .robin_emoticon_wrapper {
       margin-bottom: 15px;
     }
   }
 
-  &[data-emoticon="1"] .feedback_emoticon:not(:nth-child(1)),
-  &[data-emoticon="2"] .feedback_emoticon:not(:nth-child(2)),
-  &[data-emoticon="3"] .feedback_emoticon:not(:nth-child(3)),
-  &[data-emoticon="4"] .feedback_emoticon:not(:nth-child(4)),
-  &[data-emoticon="5"] .feedback_emoticon:not(:nth-child(5)) {
+  &[data-emoticon="1"] .robin_emoticon:not(:nth-child(1)),
+  &[data-emoticon="2"] .robin_emoticon:not(:nth-child(2)),
+  &[data-emoticon="3"] .robin_emoticon:not(:nth-child(3)),
+  &[data-emoticon="4"] .robin_emoticon:not(:nth-child(4)),
+  &[data-emoticon="5"] .robin_emoticon:not(:nth-child(5)) {
     #path22 {
       fill: #ccc !important;
     }
@@ -74,25 +74,25 @@ $emojis: [1, 2, 3, 4, 5];
     }
   }
 
-  &[data-state="1"] .feedback_state_1 {display: block}
-  &[data-state="2"] .feedback_state_2 {display: block}
-  &[data-state="2"] .feedback_skip {display: inline-block}
-  &[data-state="3"] .feedback_message {opacity: 1}
+  &[data-state="1"] .robin_state_1 {display: block}
+  &[data-state="2"] .robin_state_2 {display: block}
+  &[data-state="2"] .robin_skip {display: inline-block}
+  &[data-state="3"] .robin_message {opacity: 1}
   &[data-state="3"] #ellipse_eye {display: none}
   &[data-state="3"] #left_eye, &[data-state="3"] #right_eye {display: block}
 }
  #left_eye, #right_eye {display: none}
-.feedback_state_1,
-.feedback_state_2 {
+.robin_state_1,
+.robin_state_2 {
   display: none;
 }
 
-.feedback_btn.feedback_skip {
+.robin_btn.robin_skip {
   display: none;
 }
 
-.feedback-buddy,
-.feedback_close {
+.robin-buddy,
+.robin_close {
   bottom: 20px;
   right: 30px;
   // opacity: 0;
@@ -111,17 +111,17 @@ $emojis: [1, 2, 3, 4, 5];
   box-shadow: 0 2px 10px 1px rgba(0,0,0,.18);
 }
 
-.feedback_close {
+.robin_close {
   display: none;
 }
 
-.feedback-buddy_min {
+.robin-buddy_min {
   opacity: .96;
   position: fixed;
   direction: ltr !important;
 }
 
-.feedback_popup {
+.robin_popup {
   opacity: 0;
   pointer-events: none;
   position: absolute;
@@ -135,7 +135,7 @@ $emojis: [1, 2, 3, 4, 5];
   border-radius: 3px;
 }
 
-.feedback_message {
+.robin_message {
   opacity: 0;
   right: 99px;
   bottom: 29px;
@@ -166,12 +166,12 @@ $emojis: [1, 2, 3, 4, 5];
   }
 }
 
-#feedback-wrapper p {
+#robin-wrapper p {
   color: #333333;
   margin: 0;
 }
 
-.feedback_title {
+.robin_title {
   padding: 35px;
   text-align: center;
   word-break: break-word;
@@ -182,20 +182,20 @@ $emojis: [1, 2, 3, 4, 5];
   line-height: normal !important;
 }
 
-.feedback_state_1 .feedback_title {
+.robin_state_1 .robin_title {
   padding-bottom: 0;
 }
 
-.feedback_emoticon_wrapper {
+.robin_emoticon_wrapper {
   margin: 25px 12px 45px;
 }
 
-#feedback-wrapper[data-emoticon] .feedback_emoticon_icon,
-#feedback-wrapper .feedback_emoticon_wrapper:hover .feedback_emoticon_icon {
+#robin-wrapper[data-emoticon] .robin_emoticon_icon,
+#robin-wrapper .robin_emoticon_wrapper:hover .robin_emoticon_icon {
   opacity: .6;
 }
 
-.feedback_emoticon {
+.robin_emoticon {
   position: relative;
   display: inline-block;
   bottom: -50px;
@@ -209,19 +209,19 @@ $emojis: [1, 2, 3, 4, 5];
               opacity .3s cubic-bezier(0.175, 0.885, 0.320, 1.350);
   transition-delay: .2s;
   &:hover {
-    .feedback_emoticon_icon {
+    .robin_emoticon_icon {
       transition: none;
       opacity: 1 !important;
     }
 
-    .feedback_emotion_text {
+    .robin_emotion_text {
         opacity: 1;
         top: 42px;
     }
   }
 }
 
-.feedback_emotion_text {
+.robin_emotion_text {
   position: absolute;
   font-size: 12px;
   color: #999;
@@ -233,14 +233,14 @@ $emojis: [1, 2, 3, 4, 5];
   transition: all .2s ease-in-out;
 }
 
-.feedback_content_comment {
+.robin_content_comment {
   background: #eaeaeb;
   margin-bottom: 12px;
   display: none;
   position: relative;
 }
 
-.feedback_state_1 .feedback_content_comment {
+.robin_state_1 .robin_content_comment {
   &:before {
     content: "";
     width: 1px;
@@ -254,7 +254,7 @@ $emojis: [1, 2, 3, 4, 5];
   }
 }
 
-.feedback_textarea {
+.robin_textarea {
   border: 0 !important;
   font-family: Helvetica, Arial, sans-serif !important;
   color: #454A55 !important;
@@ -268,7 +268,7 @@ $emojis: [1, 2, 3, 4, 5];
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
-textarea.feedback_textarea {
+textarea.robin_textarea {
   height: 105px !important;
   line-height: 18px !important;
   font-size: 0.9em;
@@ -278,13 +278,13 @@ textarea.feedback_textarea {
   text-align: center;
 }
 
-.feedback_footer {
+.robin_footer {
   padding: 0 12px 12px 12px;
   text-align: right;
   display: none;
 }
 
-.feedback_btn {
+.robin_btn {
   cursor: pointer;
   text-decoration: none !important;
   font-size: 13px !important;
