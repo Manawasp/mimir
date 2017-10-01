@@ -38,5 +38,8 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^2.30.1"
   }
 }
