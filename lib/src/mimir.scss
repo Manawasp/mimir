@@ -251,22 +251,19 @@ $emojis: [1, 2, 3, 4, 5];
 }
 
 .mimir_textarea {
-  border: 0 !important;
-  font-family: Helvetica, Arial, sans-serif !important;
-  color: #454A55 !important;
+  border: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #454A55;
   background: transparent;
   padding: 12px 20px;
+  outline: 0;
   resize: none;
-  outline: none;
   box-shadow: none;
   width: 280px;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
 }
 textarea.mimir_textarea {
-  height: 105px !important;
-  line-height: 18px !important;
+  height: 105px;
+  line-height: 18px;
   font-size: 0.9em;
 }
 
@@ -282,27 +279,27 @@ textarea.mimir_textarea {
 
 .mimir_btn {
   cursor: pointer;
-  text-decoration: none !important;
-  font-size: 13px !important;
-  font-weight: bold !important;
-  padding: 7px 10px !important;
-  border: 0 !important;
-  outline: 0 !important;
-  height: initial !important;
-  min-height: initial !important;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 7px 10px;
+  border: 0;
+  outline: 0;
+  height: initial;
+  min-height: initial;
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
-  width: auto !important;
-  min-width: initial !important;
+  width: auto;
+  min-width: initial;
   zoom: 1;
   transition: all .2s ease-in-out;
   border-radius: 3px;
   background: transparent;
 
   &.link {
-    font-weight: normal !important;
-    text-decoration: underline !important;
+    font-weight: normal;
+    text-decoration: underline;
   }
 
   &.default {
@@ -313,17 +310,17 @@ textarea.mimir_textarea {
   }
 
   &.primary {
-    background: #f4364c !important;
-    color: #ffffff !important;
-    font-weight: normal !important;
+    background: #f4364c;
+    color: #ffffff;
+    font-weight: normal;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
   }
 
   &.disabled,
   &[disabled] {
     box-shadow: none;
-    background: #cccccc !important;
-    color: #333333 !important;
+    background: #cccccc;
+    color: #333333;
   }
 }
 
