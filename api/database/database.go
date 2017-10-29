@@ -1,59 +1,79 @@
 package database
 
 import (
+	"context"
 	"crypto/tls"
-	"crypto/x509"
-	"errors"
 	"net"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 	mgo "gopkg.in/mgo.v2"
 
-	"feedback/api/config"
+	"mimir/api/config"
+	"mimir/api/utils"
 )
 
+// Session TODO
 var Session *mgo.Session
 
+func init() {
+	var err error
+	Session, err = New()
+	if err != nil {
+		log.Errorf("Unable to connect to the database: %v.", err)
+		return
+	}
+}
+
 // New TODO
-func New() error {
+func New() (*mgo.Session, error) {
 	conf := config.App.DB
 
-	if len(conf.Host) == 0 {
-		return errors.New("Database is not configured")
+	dialInfo, err := mgo.ParseURL(conf.Host)
+	if err != nil {
+		log.Errorf("Unable to connect the datastore: %v", err)
+		return nil, err
 	}
+	dialInfo.Database = conf.DB
+	dialInfo.Timeout = time.Second * 10
 
-	// Generate connection string
-	// "mongodb://<username>:<password>@<hostname>:<port>,<hostname>:<port>/<db-name>
-	str := "mongodb://"
 	if len(conf.Username) > 0 {
-		str += conf.Username + ":" + conf.Password + "@"
+		dialInfo.Username = conf.Username
+		dialInfo.Password = conf.Password
 	}
-	str += conf.Host + "/" + conf.Database
-	dialInfo, err := mgo.ParseURL(str)
 
-	// Setup TLS connection if HTTPS set to true
-	if conf.HTTPS {
-		roots := x509.NewCertPool()
-		roots.AppendCertsFromPEM([]byte(""))
-
-		tlsConfig := &tls.Config{}
-		tlsConfig.RootCAs = roots
-
+	if conf.SSL {
 		dialInfo.DialServer = func(addr *mgo.ServerAddr) (net.Conn, error) {
-			conn, err := tls.Dial("tcp", addr.String(), tlsConfig)
-			return conn, err
+			return tls.Dial("tcp", addr.String(), &tls.Config{
+				InsecureSkipVerify: true,
+			})
 		}
 	}
 
-	Session, err := mgo.DialWithInfo(dialInfo)
+	session, err := mgo.DialWithInfo(dialInfo)
+	// session, err := mgo.Dial(conf.Host)
 	if err != nil {
 		log.Errorf("Unable to connect the datastore: %v", err)
-		return err
+		return nil, err
 	}
 
-	if err := Session.Ping(); err != nil {
-		return err
+	if err := session.Ping(); err != nil {
+		return nil, err
 	}
 
+	return session, nil
+}
+
+// ToContext TODO
+func ToContext(ctx context.Context, db *mgo.Database) context.Context {
+	newctx := context.WithValue(ctx, utils.KeyDB, db)
+	return newctx
+}
+
+// FromContext TODO
+func FromContext(ctx context.Context) *mgo.Database {
+	if db := ctx.Value(utils.KeyDB); db != nil {
+		return db.(*mgo.Database)
+	}
 	return nil
 }

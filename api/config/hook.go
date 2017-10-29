@@ -8,14 +8,16 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 
-	"feedback/api/models"
+	"mimir/api/models"
 )
 
+// WebhookChannel TODO
 type WebhookChannel struct {
 	Name    string `toml:"channel"`
 	Pattern string `toml:"pattern"`
 }
 
+// Webhook TODO
 type Webhook struct {
 	URL      string           `toml:"url"`
 	Icon     string           `toml:"icon"`
@@ -23,6 +25,7 @@ type Webhook struct {
 	Channels []WebhookChannel `toml:"channel"`
 }
 
+// NotifyMessage TODO
 type NotifyMessage struct {
 	Channel  string `json:"channel"`
 	Username string `json:"username"`
@@ -30,6 +33,7 @@ type NotifyMessage struct {
 	Icon     string `json:"icon_url"`
 }
 
+// Notify TODO
 func (wh *Webhook) Notify(feedback *models.Feedback) {
 	// Init notif
 	notif := NotifyMessage{

@@ -9,7 +9,7 @@ import (
 
 // NewRouter initilize a router with Root ressources
 func NewRouter(router *httprouter.Router, version, build, hash string) {
-	router.GET("/api", root(version, build, hash))
+	router.GET("/", root(version, build, hash))
 }
 
 func root(version, build, hash string) func(http.ResponseWriter, *http.Request, httprouter.Params) {

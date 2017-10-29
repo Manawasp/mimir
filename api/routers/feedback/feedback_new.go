@@ -7,9 +7,9 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/julienschmidt/httprouter"
 
-	"feedback/api/config"
-	"feedback/api/database"
-	"feedback/api/models"
+	"mimir/api/config"
+	"mimir/api/database"
+	"mimir/api/models"
 )
 
 func feedbackNew(rw http.ResponseWriter, req *http.Request, ps httprouter.Params) {

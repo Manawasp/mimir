@@ -13,6 +13,7 @@ type Config struct {
 	Hooks []Webhook `toml:"webhook"`
 }
 
+// App TODO
 var App Config
 
 // Init conf var read toml file and add it inside of the var

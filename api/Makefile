@@ -1,4 +1,4 @@
-BINARY=feedback-api
+BINARY=mimir-api
 
 VERSION=`git describe --abbrev=0 --tags`
 BUILD=`date +%FT%T%z`

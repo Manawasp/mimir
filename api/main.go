@@ -10,8 +10,8 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/julienschmidt/httprouter"
 
-	"feedback/api/routers/feedback"
-	"feedback/api/routers/root"
+	"mimir/api/routers/feedback"
+	"mimir/api/routers/root"
 )
 
 // Version TODO
@@ -29,10 +29,10 @@ func initRouter(router *httprouter.Router) {
 
 func main() {
 	var (
-		port = flag.String("port", os.Getenv("FEEDBACK_API_PORT"), "Port to listen to")
+		port = flag.String("port", os.Getenv("MIMIR_API_PORT"), "Port to listen to")
 	)
 	flag.Parse()
-	log.Info("Initializing feedback api...")
+	log.Info("Initializing mimir api...")
 
 	// Set the addr with the port
 	var bindingPort int
@@ -50,6 +50,6 @@ func main() {
 	initRouter(router)
 
 	// Start the api
-	log.Infof("Feedback is running at %s.", addr)
+	log.Infof("Mimir is running at %s.", addr)
 	log.Fatal(http.ListenAndServe(addr, router))
 }
