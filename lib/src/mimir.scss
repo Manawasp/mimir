@@ -1,0 +1,397 @@
+$emojis: [1, 2, 3, 4, 5];
+
+#mimir-wrapper {
+  font-family: Helvetica, Arial, sans-serif !important;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  &[data-v-state="open"] {
+    .mimir_popup,
+    .mimir_emoticon {
+      opacity: 1;
+      bottom: 92px;
+      pointer-events: all;
+    }
+
+    .mimir_emoticon {
+      bottom: 0px;
+      @each $emoji in $emojis {
+        &:nth-child(#{$emoji}) {transition-delay: 0.05s + 0.08s * $emoji;}
+      }
+    }
+
+    .mimir-buddy {
+      display: none;
+    }
+
+    .mimir_close {
+      display: block;
+    }
+  }
+
+  &[data-emoticon="1"] .mimir_emoticon:nth-child(1),
+  &[data-emoticon="2"] .mimir_emoticon:nth-child(2),
+  &[data-emoticon="3"] .mimir_emoticon:nth-child(3),
+  &[data-emoticon="4"] .mimir_emoticon:nth-child(4),
+  &[data-emoticon="5"] .mimir_emoticon:nth-child(5) {
+    .mimir_emoticon_icon {
+      opacity: 1;
+    }
+  }
+
+  @each $emoji in $emojis {
+    &:nth-child(#{$emoji}) {transition-delay: 0.05s + 0.08s * $emoji;}
+    &[data-emoticon="#{$emoji}"] .mimir_content_comment:before {
+      left: 12% + 18.5% * ($emoji - 1);
+    }
+  }
+
+  &[data-emoticon] {
+    .mimir_content_comment,
+    .mimir_footer {
+      display: block;
+    }
+    .mimir_emoticon_wrapper {
+      margin-bottom: 15px;
+    }
+  }
+
+  &[data-emoticon="1"] .mimir_emoticon:not(:nth-child(1)),
+  &[data-emoticon="2"] .mimir_emoticon:not(:nth-child(2)),
+  &[data-emoticon="3"] .mimir_emoticon:not(:nth-child(3)),
+  &[data-emoticon="4"] .mimir_emoticon:not(:nth-child(4)),
+  &[data-emoticon="5"] .mimir_emoticon:not(:nth-child(5)) {
+    #path22 {
+      fill: #ccc !important;
+    }
+    #path30, #path34 {
+      fill: #664500 !important;
+    }
+  }
+
+  &[data-state="1"] .mimir_state_1 {display: block}
+  &[data-state="2"] .mimir_state_2 {display: block}
+  &[data-state="2"] .mimir_skip {display: inline-block}
+  &[data-state="3"] .mimir_message {opacity: 1}
+  &[data-state="3"] #ellipse_eye {display: none}
+  &[data-state="3"] #left_eye, &[data-state="3"] #right_eye {display: block}
+}
+ #left_eye, #right_eye {display: none}
+.mimir_state_1,
+.mimir_state_2 {
+  display: none;
+}
+
+.mimir_btn.mimir_skip {
+  display: none;
+}
+
+.mimir-buddy,
+.mimir_close {
+  bottom: 20px;
+  right: 30px;
+  // opacity: 0;
+  position: fixed;
+  z-index: 10;
+  bottom: 33px;
+  width: 44px;
+  height: 37px;
+  font-size: 20px;
+  text-align: center !important;
+  cursor: pointer;
+  background-color: #f4364c !important;
+  color: #ffffff !important;
+  padding-left: 1px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px 1px rgba(0,0,0,.18);
+}
+
+.mimir_close {
+  display: none;
+}
+
+.mimir-buddy_min {
+  opacity: .96;
+  position: fixed;
+  direction: ltr !important;
+}
+
+.mimir_popup {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
+  width: 320px;
+  bottom: 84px;
+  right: 30px;
+  background: #ffffff;
+  box-shadow: 0 6px 100px 0 rgba(0,0,0,.35) !important;
+  transition: bottom .2s ease-in-out, opacity .2s ease-in-out;
+  border-radius: 3px;
+}
+
+.mimir_message {
+  opacity: 0;
+  right: 99px;
+  bottom: 29px;
+  pointer-events: none;
+  position: absolute;
+  padding: 12px 15px;
+  width: 180px;
+  text-align: center;
+  font-size: 12px !important;
+  cursor: pointer;
+  background: #ffffff;
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,.33);
+  box-sizing: border-box;
+  border-radius: 3px;
+  transition: all .2s ease-in-out;
+      font-size: 0.9em;
+
+  &:before {
+    content: "";
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    bottom: 13px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    right: -7px;
+    border-left: 7px solid white;
+  }
+}
+
+#mimir-wrapper p {
+  color: #333333;
+  margin: 0;
+}
+
+.mimir_title {
+  padding: 35px;
+  text-align: center;
+  word-break: break-word;
+  word-wrap: break-word;
+  cursor: default;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: normal !important;
+}
+
+.mimir_state_1 .mimir_title {
+  padding-bottom: 0;
+}
+
+.mimir_emoticon_wrapper {
+  margin: 25px 12px 45px;
+}
+
+#mimir-wrapper[data-emoticon] .mimir_emoticon_icon,
+#mimir-wrapper .mimir_emoticon_wrapper:hover .mimir_emoticon_icon {
+  opacity: .6;
+}
+
+.mimir_emoticon {
+  position: relative;
+  display: inline-block;
+  bottom: -50px;
+  opacity: 0;
+  width: 20%;
+  text-align: center;
+  font-size: 26px;
+  cursor: pointer;
+  height: 30px;
+  transition: bottom .3s cubic-bezier(0.175, 0.885, 0.320, 1.350),
+              opacity .3s cubic-bezier(0.175, 0.885, 0.320, 1.350);
+  transition-delay: .2s;
+  &:hover {
+    .mimir_emoticon_icon {
+      transition: none;
+      opacity: 1 !important;
+    }
+
+    .mimir_emotion_text {
+        opacity: 1;
+        top: 42px;
+    }
+  }
+}
+
+.mimir_emotion_text {
+  position: absolute;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  top: 47px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+}
+
+.mimir_content_comment {
+  background: #eaeaeb;
+  margin-bottom: 12px;
+  display: none;
+  position: relative;
+}
+
+.mimir_state_1 .mimir_content_comment {
+  &:before {
+    content: "";
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    left: auto;
+    top: -6px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid rgba(0,0,0,.1);
+  }
+}
+
+.mimir_textarea {
+  border: 0 !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  color: #454A55 !important;
+  background: transparent;
+  padding: 12px 20px;
+  resize: none;
+  outline: none;
+  box-shadow: none;
+  width: 280px;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+textarea.mimir_textarea {
+  height: 105px !important;
+  line-height: 18px !important;
+  font-size: 0.9em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mimir_footer {
+  padding: 0 12px 12px 12px;
+  text-align: right;
+  display: none;
+}
+
+.mimir_btn {
+  cursor: pointer;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  padding: 7px 10px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  height: initial !important;
+  min-height: initial !important;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  width: auto !important;
+  min-width: initial !important;
+  zoom: 1;
+  transition: all .2s ease-in-out;
+  border-radius: 3px;
+  background: transparent;
+
+  &.link {
+    font-weight: normal !important;
+    text-decoration: underline !important;
+  }
+
+  &.default {
+    color: #aaa;
+    &:hover {
+      color: #666;
+    }
+  }
+
+  &.primary {
+    background: #f4364c !important;
+    color: #ffffff !important;
+    font-weight: normal !important;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &.disabled,
+  &[disabled] {
+    box-shadow: none;
+    background: #cccccc !important;
+    color: #333333 !important;
+  }
+}
+
+// Responsive
+@media only screen and (max-width: 980px) {
+  .mimir-buddy, .mimir_close {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  #mimir-wrapper .mimir_popup,
+  #mimir-wrapper .mimir_popup  {
+    left: 10px;
+    right: 10px;
+    position: fixed;
+    width: initial;
+  }
+  #mimir-wrapper[data-v-state="open"] .mimir_popup {
+    bottom: 82px;
+  }
+
+  #mimir-wrapper[data-emoticon] .mimir_popup {
+    left:0;
+    bottom:0;
+    right:0;
+    top:0;
+    .mimir_state_1 .mimir_title {
+      display: block;
+    }
+    .mimir_emoticon_wrapper {
+      margin-bottom: 40px;
+    }
+    .mimir_emotion_text {
+      top: 35px;
+    }
+    .mimir_title {
+      padding-bottom: 35px;
+      border:1px solid #eee;
+      font-size: 18px;
+    }
+
+    .mimir_content {
+      padding: 0 20px;
+    }
+  }
+
+  .mimir_btn {
+    padding: 7px 15px !important;
+    font-size: 16px !important;
+  }
+
+  .mimir_footer {
+    padding: 10px 20px;
+  }
+
+  .mimir_content_comment {
+    margin-top: 30px;
+  }
+
+  textarea.mimir_textarea {
+    font-size: 16px !important;
+    height: 130px !important;
+  }
+
+  .mimir_message {
+    font-size: 14px !important;
+    bottom: 18px;
+    right: 82px;
+    width: 215px;
+  }
+}
