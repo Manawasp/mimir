@@ -27,4 +27,12 @@ func init() {
 	if _, err := toml.DecodeFile(configFile, &App); err != nil {
 		log.Fatal(err)
 	}
+
+	// Overwrite config
+	if len(os.Getenv("MIMIR_DB_HOST")) > 0 {
+		App.DB.Host = os.Getenv("MIMIR_DB_HOST")
+		App.DB.Username = os.Getenv("MIMIR_DB_USERNAME")
+		App.DB.Password = os.Getenv("MIMIR_DB_PASSWORD")
+		App.DB.SSL = os.Getenv("MIMIR_DB_SSL")
+	}
 }
