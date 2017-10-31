@@ -33,6 +33,8 @@ func init() {
 		App.DB.Host = os.Getenv("MIMIR_DB_HOST")
 		App.DB.Username = os.Getenv("MIMIR_DB_USERNAME")
 		App.DB.Password = os.Getenv("MIMIR_DB_PASSWORD")
-		App.DB.SSL = os.Getenv("MIMIR_DB_SSL")
+		if os.Getenv("MIMIR_DB_SSL") == "true" {
+			App.DB.SSL = true
+		}
 	}
 }
