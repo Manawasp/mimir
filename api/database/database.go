@@ -34,7 +34,7 @@ func New() (*mgo.Session, error) {
 		log.Errorf("Unable to connect the datastore: %v", err)
 		return nil, err
 	}
-	dialInfo.Database = conf.DB
+	dialInfo.Database = conf.Database
 	dialInfo.Timeout = time.Second * 10
 
 	if len(conf.Username) > 0 {
