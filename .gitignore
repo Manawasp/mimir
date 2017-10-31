@@ -58,3 +58,6 @@ typings/
 .env
 
 public/
+
+# Remove config
+*.toml
