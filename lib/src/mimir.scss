@@ -5,6 +5,7 @@ $emojis: [1, 2, 3, 4, 5];
   position: fixed;
   bottom: 0;
   right: 0;
+  z-index:1000;
 
   &[data-v-state="open"] {
     .mimir_popup,
