@@ -369,6 +369,21 @@ textarea.mimir_textarea {
     }
   }
 
+  #mimir-wrapper[data-state="1"] .mimir_emotion_text {
+    display: block;
+  }
+
+
+  &[data-emoticon="1"] .mimir_emoticon:nth-child(1),
+  &[data-emoticon="2"] .mimir_emoticon:nth-child(2),
+  &[data-emoticon="3"] .mimir_emoticon:nth-child(3),
+  &[data-emoticon="4"] .mimir_emoticon:nth-child(4),
+  &[data-emoticon="5"] .mimir_emoticon:nth-child(5) {
+    .mimir_emotion_text {
+      opacity: 1;
+    }
+  }
+
   .mimir_btn {
     padding: 7px 15px !important;
     font-size: 16px !important;
