@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server -d --hot --config webpack.config.js --watch --host 0.0.0.0",
     "build": "webpack --progress",
-    "production": "NODE_ENV=production webpack --progress"
+    "production": "webpack --env.production --progress"
   },
   "keywords": [],
   "author": "Clovis Kyndt <clovis.kyndt@gmail.com>",
