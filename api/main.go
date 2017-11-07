@@ -9,6 +9,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/julienschmidt/httprouter"
+	"github.com/rs/cors"
 
 	"mimir/api/routers/feedback"
 	"mimir/api/routers/root"
@@ -51,5 +52,5 @@ func main() {
 
 	// Start the api
 	log.Infof("Mimir is running at %s.", addr)
-	log.Fatal(http.ListenAndServe(addr, router))
+	log.Fatal(http.ListenAndServe(addr, cors.Default().Handler(router)))
 }
