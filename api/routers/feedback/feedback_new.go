@@ -25,7 +25,7 @@ func feedbackNew(rw http.ResponseWriter, req *http.Request, ps httprouter.Params
 	}
 	defer req.Body.Close()
 
-	registerFeedback(feed)
+	go registerFeedback(feed)
 
 	rw.WriteHeader(http.StatusCreated)
 }
