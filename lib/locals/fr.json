@@ -1,13 +1,14 @@
 {
   "send": "Envoyer",
   "skip": "Suivant",
+  "cancel": "Annuler",
   "thanks": "Merci d'avoir partagé votre avis avec nous !",
   "rate_your_experience": "Que pensez-vous de votre expérience ?",
-  "emoji_hate": "Détestable",
+  "emoji_hate": "Mauvaise",
   "emoji_dislike": "Décevante",
   "emoji_neutral": "Neutre",
   "emoji_like": "Agréable",
-  "emoji_love": "Parfaite",
+  "emoji_love": "Géniale",
   "follow_up": "Entrer votre addresse mail si vous souhaitez recevoir un suivi",
   "tell_us": "Dites-nous en plus..."
 }

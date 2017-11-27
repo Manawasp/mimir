@@ -1,13 +1,14 @@
 {
   "send": "Send",
   "skip": "Skip",
+  "cancel": "Cancel",
   "thanks": "Thank you for sharing your feedback with us !",
   "rate_your_experience": "How would you rate your experience ?",
-  "emoji_hate": "Hate",
-  "emoji_dislike": "Dislike",
+  "emoji_hate": "Bad",
+  "emoji_dislike": "Disappointing",
   "emoji_neutral": "Neutral",
-  "emoji_like": "Like",
-  "emoji_love": "Love",
+  "emoji_like": "Pleasant",
+  "emoji_love": "Amazing",
   "follow_up": "Enter your email address if you would like to receive a follow up.",
   "tell_us": "Tell us about your experience..."
 }
