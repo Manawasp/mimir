@@ -15,8 +15,7 @@ $emoji-fg-disabled: #664500;
 #mimir-wrapper {
   font-family: Helvetica, Arial, sans-serif;
   position: fixed;
-  font-size: 13px;
-  font-size: 0.9rem;
+  font-size: 14px;
   bottom: 0;
   right: 0;
   z-index:1000;
@@ -304,6 +303,7 @@ $emoji-fg-disabled: #664500;
 .mimir_textarea {
   border: 0;
   font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px
   color: #454A55;
   background: transparent;
   padding: 12px 20px;
